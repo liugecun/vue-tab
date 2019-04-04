@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>上海伊莱美医院</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/rem.js"></script>
+    <script src="js/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div class="header">
+			<img src="images/header.jpg">
+		</div>
+		<div class="banner">
+			<img src="images/banner.jpg">
+		</div>
+		<div class="sliderNav">
+			<ul class="std-ul">
+				<li class="sliderNav-li" v-for="(tab,index) in tabsName" :key="index" :class="{active:index === curIndex}" @click="toggleTabs(index)"><span>{{tab}}</span></li>
+			</ul>
+			<div class="sliderContent" v-show="curIndex===0">
+				<ul class="list-ul">
+					<li v-for="(item,index) in lists" :key="index">
+						<a :href="item.listHref">
+							<img :src="item.listSrc">
+							<span>{{item.listName}}</span>
+						</a>
+					</li>
+				</ul>
+				<div class="sliderStd">
+					<img src="images/link.jpg">
+					<a href="javascript:void(0)" class="st-btn">伊式变美 点击加入 &gt;</a>
+				</div>
+			</div>
+			<div class="sliderAsk" v-show="curIndex===1">
+				<img src="images/s_01.jpg" class="ask_01">
+				<img src="images/s_02.jpg" class="ask_02">
+				<img src="images/s_03.jpg" class="ask_03">
+				<div class="ask-btn">
+					<a href="javascript:;">在线咨询</a>
+				</div>
+				<div class="ask-tip"></div>
+				<img src="images/s_04.jpg" class="ask_04">
+				<div class="ask-btn">
+					<a href="javascript:;">点击定制美眼方案</a>
+				</div>
+				<img src="images/s_05.jpg">
+			</div>
+		</div>
+		<div class="footer">
+		    <div class="footer-fl">
+		        <a href="javascript:void(0)">请输入您的问题……</a>
+		    </div>
+		    <div class="footer-fr">
+		    	<a href="javascript:void(0)"><i></i>在线咨询</a>
+		    	<a href="javascript:void(0)"><i></i>价格咨询</a>
+		    </div>
+		</div>
+	</div>
+
+	<script>
+		var lists=[
+			{	
+				listHref:'javascript:void(0)',
+				listSrc:'images/list01.png',
+				listName:'价格/优惠'
+			},{
+				listHref:'javascript:void(0)',
+				listSrc:'images/list02.png',
+				listName:'手术效果'
+			},{
+				listHref:'javascript:void(0)',
+				listSrc:'images/list03.png',
+				listName:'专业医生'
+			},{
+				listHref:'javascript:void(0)',
+				listSrc:'images/list04.png',
+				listName:'手术安全'
+			},{
+				listHref:'javascript:void(0)',
+				listSrc:'images/list05.png',
+				listName:'手术过程'
+			},{
+				listHref:'javascript:void(0)',
+				listSrc:'images/list06.png',
+				listName:'恢复时间'
+			},{
+				listHref:'javascript:void(0)',
+				listSrc:'images/list07.png',
+				listName:'注意事项'
+			},{
+				listHref:'javascript:void(0)',
+				listSrc:'images/list08.png',
+				listName:'了解更多'
+			},
+
+		];
+		new Vue({
+			el:'#app',
+			data:{
+				lists:lists,
+				tabsName:["大家都在关注","医生解答"],
+				curIndex: 1   //默认第一个tab为激活状态
+			},
+			methods:{
+				toggleTabs: function(index){
+					this.curIndex = index;
+				}
+			}
+		})
+	</script>
+</body>
+</html>
